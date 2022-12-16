@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Entities.Player;
+using Manager.CameraManager;
 
 public class L_PlayerBehaviour : MonoBehaviour
 {
@@ -52,7 +54,7 @@ public class L_PlayerBehaviour : MonoBehaviour
         _ray.RayMovement.DeleteInputs();
         _ray.RayMovement.OnLand -= QuitRay;
         Destroy(_ray.gameObject);
-        L_CameraManager.Instance?.Remove(L_CameraManager.Instance?.MainCamera);
+        L_CameraManager.Instance.Remove(L_CameraManager.Instance.MainCamera);
         //L_CameraManager.Instance.MainCamera.Active = false;
     }
 
@@ -71,7 +73,7 @@ public class L_PlayerBehaviour : MonoBehaviour
     }
     void DetectWalls()
     {
-        bool hit = Physics.SphereCast(CurrentPosition, radius, Vector3.down, out RaycastHit _hitInfos, Mathf.Infinity, wallLayer);
+        bool hit = Physics.SphereCast(CurrentPosition, radius, Vector3.down, out RaycastHit _result, Mathf.Infinity, wallLayer);
         if (!hit)
         {
             Invoke(nameof(SpawnRay), timeBeforeSpawning);

@@ -1,3 +1,4 @@
+using Manager.CameraManager;
 using UnityEngine;
 
 public abstract class L_CameraBehaviour : MonoBehaviour, IManagedItem<string>

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Entities.Player;
 
 public class L_RayBehaviour : MonoBehaviour
 {
